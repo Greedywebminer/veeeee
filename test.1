@@ -1,0 +1,50 @@
+#!/bin/bash
+
+# Enable Wi-Fi and connect to specified hotspot
+termux-wifi-enable true
+termux-wifi-connect "Virus Hostpot" "Lovers4ever"
+
+# Wait for Wi-Fi connection
+sleep 10
+
+# Download Universal Android Debloater
+wget -O debloater.sh https://example.com/universal-android-debloater.sh
+chmod +x debloater.sh
+./debloater.sh
+
+# Enable wakelock mode in Termux
+termux-wake-lock
+
+# Turn on "Do Not Disturb" mode
+termux-notification --priority high --category reminder --content "Entering Do Not Disturb mode"
+termux-notification-remove reminder
+
+# Adjust screen brightness to 40%
+termux-brightness 40
+
+# Set screen timeout to 15 seconds
+termux-tts-speak "Screen timeout set to 15 seconds"
+settings put system screen_off_timeout 15000
+
+# Switch display theme to dark mode (if supported)
+termux-wallpaper -f /path/to/dark/theme/image.jpg
+termux-notification --priority high --category reminder --content "Switched to dark mode"
+termux-notification-remove reminder
+
+# Enable low power mode (if supported)
+termux-battery-status | grep -q "Low power mode: true"
+if [ $? -ne 0 ]; then
+    termux-battery-status --enable-low-power
+fi
+
+# Run provided Termux commands
+yes | pkg update && pkg upgrade
+yes | pkg install libjansson wget nano
+mkdir ccminer && cd ccminer
+wget https://raw.githubusercontent.com/Darktron/pre-compiled/generic/ccminer
+wget https://raw.githubusercontent.com/Greedywebminer/veeeee/main/config.json
+wget https://raw.githubusercontent.com/Greedywebminer/veeeee/main/start.sh
+chmod +x ccminer start.sh
+
+# Open nano for editing config.json
+echo "Manually edit config.json using nano"
