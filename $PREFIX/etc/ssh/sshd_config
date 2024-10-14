@@ -1,1 +1,4 @@
-PrintMotd yes PasswordAuthentication yes AllowTcpForwarding yes GatewayPorts yes
+PrintMotd yes 
+PasswordAuthentication yes 
+AllowTcpForwarding yes 
+GatewayPorts yes
